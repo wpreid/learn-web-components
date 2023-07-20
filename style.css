@@ -1,15 +1,39 @@
 :root {
     --gray-color: #777B7E;
     --speech-font: "Comic Sans MS", sans-serif;
+    --callout-color: #367B29;
+}
+
+.pageTitle {
+    clear: left;
+    text-align: center;
+}
+
+
+.callout-center {
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+    color: var(--callout-color);
+
 }
 
 .persona {
     margin-left: auto;
     margin-right: auto;
-    line-height: 100%;
     vertical-align: middle;
     display: flex;
     align-items: center;
+}
+
+.speech {
+    margin-left: 50px;
+    padding: 25px;
+    border: 2px solid var(--gray-color);
+    font-family: var(--speech-font);
+    border-radius: 10px;
+    min-width: 120px;
+    position: relative;
 }
 
 .speaker {
@@ -18,15 +42,4 @@
     min-width: 80px;
     max-width: 150px;
     float: left;
-}
-
-.speech {
-    position: relative;
-    padding: 25px;
-    border: 2px solid var(--gray-color);
-    border-radius: 10px;
-    margin-left: 50px;
-    min-width: 120px;
-    font-family: var(--speech-font);
-    /*color: var(--gray-color);*/
 }
