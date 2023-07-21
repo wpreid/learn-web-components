@@ -4,18 +4,20 @@
     --callout-color: #367B29;
 }
 
+#pageBody {
+    margin: 0 5vw;
+}
+
 .pageTitle {
     clear: left;
     text-align: center;
 }
-
 
 .callout-center {
     text-align: center;
     font-size: larger;
     font-weight: bold;
     color: var(--callout-color);
-
 }
 
 .persona {
