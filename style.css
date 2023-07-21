@@ -1,5 +1,5 @@
 :root {
-    --gray-color: #777B7E;
+    --gray-color: #888;
     --speech-font: "Comic Sans MS", sans-serif;
     --callout-color: #367B29;
 }
@@ -27,6 +27,7 @@
 }
 
 .speech {
+    /*background-color:red;*/
     margin-left: 50px;
     padding: 25px;
     border: 2px solid var(--gray-color);
@@ -34,6 +35,7 @@
     border-radius: 10px;
     min-width: 120px;
     position: relative;
+    box-shadow: 6px 6px 6px var(--gray-color);
 }
 
 .speaker {
