@@ -132,3 +132,4 @@ dist
 # More Stuff 
 .idea/
 
+**/.DS_Store
