@@ -2,6 +2,12 @@
     --gray-color: #888;
     --speech-font: "Comic Sans MS", sans-serif;
     --callout-color: #367B29;
+    --background-color: white;
+
+    --bubble-background: var(--background-color);
+    --bubble-text-color: black;
+
+    background-color: var(--background-color);
 }
 
 #pageBody {
@@ -29,6 +35,8 @@
 }
 
 .speech {
+    background-color: var(--bubble-background);
+    color: var(--bubble-text-color);
     margin-left: 50px;
     margin-right: 7px;
     padding: 25px;
@@ -41,6 +49,7 @@
 }
 
 .speech::before {
+    /* speech bubble tail's grey background*/
     content: "";
     position: absolute;
     border-style: solid;
@@ -53,6 +62,7 @@
 }
 
 .speech::after {
+    /* Speech bubble tail's white foreground */
     content: "";
     position: absolute;
     border-style: solid;
@@ -61,7 +71,7 @@
     top: 50%;
     left: -20px;
     border-width: 9px 21px 9px 0;
-    border-color: transparent #fff;
+    border-color: transparent var(--bubble-background);
 }
 
 .speaker {
