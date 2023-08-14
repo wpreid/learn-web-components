@@ -74,7 +74,6 @@ class GHPersona extends HTMLElement {
         const character = this.getAttribute("character")
         const image = `/images/personas/${character}.gif`;
         this.shadowRoot.getElementById('speaker').setAttribute('src', image);
-        this.shadowRoot.appendChild(document.createTextNode(character));
 
     }
 }
