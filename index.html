@@ -27,28 +27,22 @@
 
     <p>Yes, how well could they sniff out poor designs in code?</p>
 
-    <!--component persona quote?-->
-    <div class="persona">
-        <img class="speaker" alt="image of wiseass character" src="/images/personas/wiseass_2.gif"/>
-        <div slot="quote">
-            They haven't <i class="italic">invented</i> a code smell that could hide from my big
-            nose!
-        </div>
-    </div>
-
-    <p>Here is text occurring after the persona</p>
 
     <gh-persona character="wiseass_2">
-        <div slot="quote">
+        <span slot="quote">
             Here is the thing the <em>wiseass</em> is saying!
-        </div>
+        </span>
     </gh-persona>
 
+    <p>Yes, indeed, wiseass! And the thing you are saying is an amazing use of SLOTS!!</p>
+
     <gh-persona character="pedant_1">
-        <div slot="quote">
+        <article slot="quote">
             Well, that wasn't so bad once we understood slots, right?
-        </div>
+        </article>
     </gh-persona>
+
+    <p>It certainly helped, pedant!</p>
 
     <gh-persona character="skeptic_1">
         <div slot="quote">
@@ -62,6 +56,14 @@
             </ul>
         </div>
     </gh-persona>
+
+    <p>True enough, skeptic, but the first item is a good thing.</p>
+    <p>The second item? that's pretty reasonable. Hmmm... it screws with the bubble tail!</p>
+    <p>I don't know if components can reference outside styles. Let's learn!</p>
+    <p>We don't -- We have already fixed that!</p>
+    <p>Yes, and we'll work on that. The problem is that the locations are specified in percentages of
+        the height of the view area, and longer windows have a greater distance between percentage
+        points.</p>
 </div>
 <script src="gh.js"></script>
 </body>

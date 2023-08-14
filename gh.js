@@ -2,7 +2,6 @@ const myStuffTemplate = document.createElement('template');
 
 myStuffTemplate.innerHTML = `
 <style>
-
 .persona {
     margin-left: auto;
     margin-right: auto;
@@ -58,7 +57,7 @@ myStuffTemplate.innerHTML = `
 <div class="persona">
 <img id="speaker" class="speaker" 
   alt="image of wiseass character" 
-  src="/images/personas/wiseass_2.gif"/>
+ />
 <div class="speech">
 <slot name="quote"></slot>
 </div>
@@ -71,9 +70,12 @@ class GHPersona extends HTMLElement {
         this.attachShadow({ 'mode': 'open' });
         const child = myStuffTemplate.content.cloneNode(true);
         this.shadowRoot.appendChild(child)
+
         const character = this.getAttribute("character")
         const image = `/images/personas/${character}.gif`;
-        this.shadowRoot.getElementById('speaker').setAttribute('src', image);
+        this.shadowRoot.
+            getElementById('speaker').
+            setAttribute('src', image);
 
     }
 }
