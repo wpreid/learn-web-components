@@ -30,7 +30,7 @@
     <!--component persona quote?-->
     <div class="persona">
         <img class="speaker" alt="image of wiseass character" src="/images/personas/wiseass_2.gif"/>
-        <div class="speech">
+        <div slot="quote">
             They haven't <i class="italic">invented</i> a code smell that could hide from my big
             nose!
         </div>
@@ -38,7 +38,17 @@
 
     <p>Here is text occurring after the persona</p>
 
-    <gh-persona character="wiseass_2">Here is the thing the wiseass is saying!</gh-persona>
+    <gh-persona character="wiseass_2">
+        <div slot="quote">
+            Here is the thing the <em>wiseass</em> is saying!
+        </div>
+    </gh-persona>
+
+    <gh-persona character="pedant_1">
+        <div slot="quote">
+            Well, that wasn't so bad once we understood slots, right?
+        </div>
+    </gh-persona>
 
 </div>
 <script src="gh.js"></script>
