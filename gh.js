@@ -56,7 +56,9 @@ myStuffTemplate.innerHTML = `
 }
 </style>
 <div class="persona">
-<img class="speaker" alt="image of wiseass character" src="/images/personas/wiseass_2.gif"/>
+<img id="speaker" class="speaker" 
+  alt="image of wiseass character" 
+  src="/images/personas/wiseass_2.gif"/>
 <div class="speech">
 <slot name="quote"></slot>
 </div>
@@ -66,9 +68,13 @@ class GHPersona extends HTMLElement {
 
     constructor() {
         super();
-        this._shadowRoot = this.attachShadow({ 'mode': 'open' });
+        this.attachShadow({ 'mode': 'open' });
         const child = myStuffTemplate.content.cloneNode(true);
-        this._shadowRoot.appendChild(child)
+        this.shadowRoot.appendChild(child)
+        const character = this.getAttribute("character")
+        const image = `/images/personas/${character}.gif`;
+        this.shadowRoot.getElementById('speaker').setAttribute('src', image);
+        this.shadowRoot.appendChild(document.createTextNode(character));
 
     }
 }
