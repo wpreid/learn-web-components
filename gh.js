@@ -107,12 +107,11 @@ gh_image_quote_template.innerHTML = `
         color: #b59d6f;
     }
     > blockquote #quote-author {
-        font-size: larger;
         text-align: right;
         margin-bottom: 0;
     }
     > blockquote #source {
-        font-size: large;
+        font-size: small;
         margin: 0;
         text-align: right;
         text-emphasis: aqua;
