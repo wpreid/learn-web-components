@@ -148,7 +148,7 @@ window.customElements.define('gh-image-quote',
                 }
             }
             else{
-               image_tag.setAttribute('disabled')
+               image_tag.setAttribute('display', 'none')
             }
         }
     }
