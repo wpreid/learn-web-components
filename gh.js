@@ -1,6 +1,6 @@
-const myStuffTemplate = document.createElement('template');
+const persona_quote_template = document.createElement('template');
 
-myStuffTemplate.innerHTML = `
+persona_quote_template.innerHTML = `
 <style>
 .persona {
     margin-left: auto;
@@ -64,20 +64,94 @@ myStuffTemplate.innerHTML = `
 </div>
 </div>`;
 
-class GHPersona extends HTMLElement {
+window.customElements.define('gh-persona',
+    class extends HTMLElement {
+        constructor() {
+            super();
+            this.attachShadow({'mode': 'open'});
+            const child = persona_quote_template.content.cloneNode(true);
+            this.shadowRoot.appendChild(child)
 
-    constructor() {
-        super();
-        this.attachShadow({ 'mode': 'open' });
-        const child = myStuffTemplate.content.cloneNode(true);
-        this.shadowRoot.appendChild(child)
+            const character = this.getAttribute("character")
+            const image_tag = this.shadowRoot.getElementById('speaker');
+            image_tag.setAttribute('src', `/images/personas/${character}.gif`);
+            image_tag.setAttribute('alt', `image of ${character}`)
 
-        const character = this.getAttribute("character")
-        const image_tag = this.shadowRoot.getElementById('speaker');
-        image_tag.setAttribute('src', `/images/personas/${character}.gif`);
-        image_tag.setAttribute('alt', `image of ${character}`)
+        }
+    }
+)
 
+const gh_image_quote_template = document.createElement('template');
+gh_image_quote_template.innerHTML = `
+<style>
+#wrapper {
+    max-width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+
+    > img { 
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        aspect-ratio: initial;
+        min-width: 150px;
+        margin-bottom: 20px;
+    }
+    > blockquote {
+        width: 60vw;
+    }
+    > blockquote q {
+        display:block;
+        font-size: x-large;
+        text-align: center;
+        color: #b59d6f;
+    }
+    > blockquote #quote-author {
+        font-size: larger;
+        text-align: right;
+        margin-bottom: 0;
+    }
+    > blockquote #source {
+        font-size: large;
+        margin: 0;
+        text-align: right;
+        text-emphasis: aqua;
     }
 }
+</style>
+<figure id="wrapper">
+<img id="image">
+<blockquote>
+<q id="quote-text"><slot name="quote"></slot></q>
+<p id="quote-author"><slot name="author"></slot></p>
+<p id="source"><em><slot name="source"></slot></em></p>
+</blockquote>
+</figure>`;
 
-window.customElements.define('gh-persona', GHPersona)
+window.customElements.define('gh-image-quote',
+    class extends HTMLElement {
+
+        constructor() {
+            super();
+            this.attachShadow({mode:'open'});
+
+            let child = gh_image_quote_template.content.cloneNode(true);
+            this.shadowRoot.appendChild(child)
+
+            const image_tag = this.shadowRoot.getElementById('image');
+            if ( this.hasAttribute('image')) {
+                const image_url = `/images/${this.getAttribute('image')}`;
+                image_tag.setAttribute('src', image_url);
+
+                if (this.hasAttribute('alt-text')) {
+                    image_tag.setAttribute('alt', this.getAttribute('alt-text'));
+                }
+            }
+            else{
+               image_tag.setAttribute('disabled')
+            }
+        }
+    }
+);
+
+
