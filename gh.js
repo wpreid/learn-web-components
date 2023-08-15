@@ -1,5 +1,4 @@
 const persona_quote_template = document.createElement('template');
-
 persona_quote_template.innerHTML = `
 <style>
 .persona {
@@ -88,35 +87,38 @@ gh_image_quote_template.innerHTML = `
     max-width: 80vw;
     margin-left: auto;
     margin-right: auto;
-
-    > img { 
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        aspect-ratio: initial;
-        min-width: 150px;
-        margin-bottom: 20px;
-    }
-    > blockquote {
-        width: 60vw;
-    }
-    > blockquote q {
-        display:block;
-        font-size: x-large;
-        text-align: center;
-        color: #b59d6f;
-    }
-    > blockquote #quote-author {
-        text-align: right;
-        margin-bottom: 0;
-    }
-    > blockquote #source {
-        font-size: small;
-        margin: 0;
-        text-align: right;
-        text-emphasis: aqua;
-    }
 }
+
+#wrapper > img { 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    aspect-ratio: initial;
+    min-width: 150px;
+    margin-bottom: 20px;
+}
+#wrapper  > blockquote {
+    margin-left: auto;
+    margin-right: auto;
+    width: 60vw;
+}
+#wrapper > blockquote q {
+    display:block;
+    font-size: x-large;
+    text-align: center;
+    color: #b59d6f;
+}
+#wrapper > blockquote #quote-author {
+    text-align: right;
+    margin-bottom: 0;
+}
+#wrapper > blockquote #source {
+    font-size: small;
+    margin: 0;
+    text-align: right;
+    text-emphasis: aqua;
+}
+
 </style>
 <figure id="wrapper">
 <img id="image">
@@ -133,7 +135,6 @@ window.customElements.define('gh-image-quote',
         constructor() {
             super();
             this.attachShadow({mode:'open'});
-
             let child = gh_image_quote_template.content.cloneNode(true);
             this.shadowRoot.appendChild(child)
 
