@@ -23,7 +23,7 @@ myStuffTemplate.innerHTML = `
     margin-right: 7px;
     padding: 25px;
     border: 2px solid var(--gray-color);
-    font-family: var(--speech-font);
+    font-family: var(--speech-font),fantasy;
     border-radius: 10px;
     min-width: 120px;
     position: relative;
@@ -36,7 +36,7 @@ myStuffTemplate.innerHTML = `
     border-style: solid;
     display: block;
     width: 0;
-    top: 48%;
+    top: 50%;
     left: -25px;
     border-width: 11px 25px 11px 0;
     border-color: transparent var(--gray-color);
@@ -48,7 +48,7 @@ myStuffTemplate.innerHTML = `
     border-style: solid;
     display: block;
     width: 0;
-    top: 50%;
+    top: calc(50% + 2px);
     left: -20px;
     border-width: 9px 21px 9px 0;
     border-color: transparent var(--bubble-background);
@@ -57,6 +57,7 @@ myStuffTemplate.innerHTML = `
 <div class="persona">
 <img id="speaker" class="speaker" 
   alt="image of wiseass character" 
+  src=""
  />
 <div class="speech">
 <slot name="quote"></slot>
