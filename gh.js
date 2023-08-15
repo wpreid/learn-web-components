@@ -9,14 +9,14 @@ myStuffTemplate.innerHTML = `
     display: flex;
     align-items: center;
 }
-.speaker {
+.persona-image {
     aspect-ratio: initial;
     width: 30vw;
     min-width: 80px;
     max-width: 150px;
     float: left;
 }
-.speech {
+.persona-speech-bubble {
     background-color: var(--bubble-background);
     color: var(--bubble-text-color);
     margin-left: 50px;
@@ -29,7 +29,7 @@ myStuffTemplate.innerHTML = `
     position: relative;
     box-shadow: 6px 6px 6px var(--gray-color);
 }
-.speech::before {
+.persona-speech-bubble::before {
     /* speech bubble tail's grey background*/
     content: "";
     position: absolute;
@@ -41,7 +41,7 @@ myStuffTemplate.innerHTML = `
     border-width: 11px 25px 11px 0;
     border-color: transparent var(--gray-color);
 }
-.speech::after {
+.persona-speech-bubble::after {
     /* Speech bubble tail's white foreground */
     content: "";
     position: absolute;
@@ -55,11 +55,11 @@ myStuffTemplate.innerHTML = `
 }
 </style>
 <div class="persona">
-<img id="speaker" class="speaker" 
-  alt="image of wiseass character" 
+<img id="speaker" class="persona-image" 
+  alt="" 
   src=""
  />
-<div class="speech">
+<div class="persona-speech-bubble">
 <slot name="quote"></slot>
 </div>
 </div>`;
@@ -73,10 +73,9 @@ class GHPersona extends HTMLElement {
         this.shadowRoot.appendChild(child)
 
         const character = this.getAttribute("character")
-        const image = `/images/personas/${character}.gif`;
-        this.shadowRoot.
-            getElementById('speaker').
-            setAttribute('src', image);
+        const image_tag = this.shadowRoot.getElementById('speaker');
+        image_tag.setAttribute('src', `/images/personas/${character}.gif`);
+        image_tag.setAttribute('alt', `image of ${character}`)
 
     }
 }
