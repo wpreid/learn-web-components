@@ -21,3 +21,7 @@
     font-weight: bold;
     color: var(--callout-color);
 }
+em {
+    font-weight: bold;
+    font-variant-caps: small-caps;
+}

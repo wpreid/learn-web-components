@@ -110,31 +110,30 @@ window.customElements.define('gh-image-quote',
         #wrapper > blockquote #quote-author {
             text-align: right;
             margin-bottom: 0;
+            font-style: italic;
         }
         #wrapper > blockquote #source {
-            font-size: small;
             margin: 0;
             text-align: right;
-            text-emphasis: aqua;
+            font-variant: small-caps;
+            
         }
-        
         </style>
         <figure id="wrapper">
         <img id="image" src="" alt="">
         <blockquote>
         <q id="quote-text"><slot name="quote"></slot></q>
         <p id="quote-author"><slot name="author"></slot></p>
-        <p id="source"><em><slot name="source"></slot></em></p>
+        <p id="source"><slot name="source"></slot></p>
         </blockquote>
         </figure>`;
 
         constructor() {
             super();
-            this.attachShadow({mode: 'open'});
-            const gh_image_quote_template = document.createElement('template');
-            gh_image_quote_template.innerHTML = this.__template;
-            let child = gh_image_quote_template.content.cloneNode(true);
-            this.shadowRoot.appendChild(child)
+            this.attachShadow({mode:"open"});
+            const child = document.createElement('template');
+            child.innerHTML = this.__template;
+            this.shadowRoot.appendChild(child.content.cloneNode(true))
 
             const image_tag = this.shadowRoot.getElementById('image');
             if (this.hasAttribute('image')) {
@@ -151,4 +150,42 @@ window.customElements.define('gh-image-quote',
     }
 );
 
+window.customElements.define('gh-right-image',
+    class extends HTMLElement{
+        __template = `
+        <style>
+        #wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        img {
+            aspect-ratio: initial;
+            float: right;
+            margin-right: 5vw;
+            margin-left: 5vw;
+            min-width: 20%;
+        }
+        #text-part {
+            width: 60vw;
+            vertical-align: middle; 
+        }
+        </style>
+        <div id="wrapper">
+        <div id="text-part"> <slot name="left-hand-text">Default Text</slot></div>
+        <img id="picture" src="/images/personas/wiseass_2.gif" alt="wiseass picture">
+        </div>
+        `;
+        constructor() {
+            super();
+            this.attachShadow({mode: 'open'});
+            const child = document.createElement('template');
+            child.innerHTML = this.__template;
+            this.shadowRoot.appendChild(child.content.cloneNode(true));
+            const image_url = this.getAttribute('image')
+            const image_tag = this.shadowRoot.getElementById('picture')
+            image_tag.setAttribute('src', image_url)
+        }
+    }
+)
 
