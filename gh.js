@@ -120,7 +120,7 @@ window.customElements.define('gh-image-quote',
         
         </style>
         <figure id="wrapper">
-        <img id="image">
+        <img id="image" src="" alt="">
         <blockquote>
         <q id="quote-text"><slot name="quote"></slot></q>
         <p id="quote-author"><slot name="author"></slot></p>
